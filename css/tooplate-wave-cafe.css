@@ -373,3 +373,81 @@ h2 { margin-top: 0; }
 .modal-footer {
     justify-content: space-between;
 }
+
+.table-responsive {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+.badge-success {
+    background-color: #28a745;
+}
+
+#special {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.table-responsive {
+    max-height: 500px;
+    overflow-y: auto;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.table thead {
+    background-color: #343a40;
+    color: white;
+}
+
+.table tbody tr {
+    background-color: white;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#contact {
+    background-color: white; /* Đặt nền trắng */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+.table-responsive {
+    background: white; /* Đảm bảo bảng cũng có nền trắng */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.table {
+    background: white;
+}
+
+thead.thead-dark {
+    background-color: #343a40;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+#secretCodeDisplay {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d9534f;
+}
