@@ -387,11 +387,6 @@ https://www.tooplate.com/view/2121-wave-cafe
         </main>
       </div>    
     </div>
-    <footer class="tm-site-footer">
-      <p class="tm-black-bg tm-footer-text">Copyright 2020 Wave Cafe
-      
-      | Design: <a href="https://www.tooplate.com" class="tm-footer-link" rel="sponsored" target="_parent">Tooplate</a></p>
-    </footer>
   </div>
     
   <!-- Background video -->
@@ -519,17 +514,25 @@ https://www.tooplate.com/view/2121-wave-cafe
   
       // Xử lý khi nhập mã xác nhận
       $("#verifySecretCode").click(function () {
-          var secretCode = $("#secretCodeInput").val();
-          var correctCode = "1234"; // Mã xác nhận cố định (sau này có thể đổi sang mã động)
-  
-          if (secretCode === correctCode) {
-              alert("Thanh toán thành công!");
-              $("#secretCodeModal").modal("hide"); // Đóng popup
-              $("#billModal").modal("hide"); // Đóng popup Bill
-          } else {
-              $("#errorMsg").show(); // Hiển thị lỗi nếu nhập sai mã
-          }
-      });
+        var secretCode = $("#secretCodeInput").val();
+        var correctCode = "1234"; // Mã xác nhận cố định (sau này có thể đổi sang mã động)
+
+        if (secretCode === correctCode) {
+            alert("Thanh toán thành công!");
+            $("#secretCodeModal").modal("hide"); // Đóng popup Secret Code
+            $("#billModal").modal("hide"); // Đóng popup Bill
+
+            // Xóa thông tin bàn khỏi session để buộc về màn hình Lock
+            sessionStorage.removeItem("tableNumber");
+
+            // Chuyển hướng về màn hình Lock
+            setTimeout(function () {
+                window.location.href = "lock.html";
+            }, 500); // Chờ 0.5 giây rồi chuyển trang
+        } else {
+            $("#errorMsg").show(); // Hiển thị lỗi nếu nhập sai mã
+        }
+    });
   
       // Ẩn thông báo lỗi khi người dùng bắt đầu nhập lại
       $("#secretCodeInput").on("input", function () {
