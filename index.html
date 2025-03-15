@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
     <link rel="stylesheet" href="css/tooplate-wave-cafe.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <!--
 Tooplate 2121 Wave Cafe
 https://www.tooplate.com/view/2121-wave-cafe
@@ -27,16 +36,16 @@ https://www.tooplate.com/view/2121-wave-cafe
               <li class="tm-page-nav-item">
                 <a href="#drink" class="tm-page-link active">
                   <i class="fas fa-mug-hot tm-page-link-icon"></i>
-                  <span>Drink Menu</span>
+                  <span>Menu</span>
                 </a>
               </li>
               <li class="tm-page-nav-item">
-                <a href="#about" class="tm-page-link">
-                  <i class="fas fa-users tm-page-link-icon"></i>
-                  <span>About Us</span>
-                </a>
+                  <a href="#" class="tm-page-link" id="openBill">
+                      <i class="fas fa-users tm-page-link-icon"></i>
+                      <span>Thanh Toán</span>
+                  </a>
               </li>
-              <li class="tm-page-nav-item">
+                <li class="tm-page-nav-item">
                 <a href="#special" class="tm-page-link">
                   <i class="fas fa-glass-martini tm-page-link-icon"></i>
                   <span>Special Items</span>
@@ -72,27 +81,49 @@ https://www.tooplate.com/view/2121-wave-cafe
 
             <div id="cold" class="tm-tab-content">
               <div class="tm-list">
-                <div class="tm-list-item">          
+                <div class="tm-list-item" id="item-iced-americano">
                   <img src="img/iced-americano.png" alt="Image" class="tm-list-item-img">
                   <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Iced Americano<span class="tm-list-item-price">$10.25</span></h3>
-                    <p class="tm-list-item-description">Here is a short description for the first item. Wave Cafe Template is provided by Tooplate.</p>
+                      <h3 class="tm-list-item-name">
+                          Iced Americano
+                          <span class="tm-list-item-price">$10.25</span>
+                      </h3>
+                      <p class="tm-list-item-description">Mô tả ngắn về món này.</p>
+                      <div class="d-flex align-items-center">
+                          <button class="btn btn-sm btn-danger mr-2 toggle-availability" data-item="iced-americano">Hết món</button>
+                          <button class="btn btn-sm btn-secondary decrease" data-item="iced-americano">-</button>
+                          <span id="qty-iced-americano" class="mx-2">0</span>
+                          <button class="btn btn-sm btn-primary increase" data-item="iced-americano">+</button>
+                      </div>
                   </div>
                 </div>
-                <div class="tm-list-item">          
+                <div class="tm-list-item" id="item-iced-cappuccino">
                   <img src="img/iced-cappuccino.png" alt="Image" class="tm-list-item-img">
                   <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Iced Cappuccino<span class="tm-list-item-price">$12.50</span></h3>
-                    <p class="tm-list-item-description">Here is a list of 4 items or add more. You can use this template for commercial purposes.</p>
+                      <h3 class="tm-list-item-name">Iced Cappuccino<span class="tm-list-item-price">$12.50</span></h3>
+                      <p class="tm-list-item-description">Mô tả ngắn về món này.</p>
+                      <div class="d-flex align-items-center">
+                          <button class="btn btn-sm btn-danger mr-2 toggle-availability" data-item="iced-cappuccino">Hết món</button>
+                          <button class="btn btn-sm btn-secondary decrease" data-item="iced-cappuccino">-</button>
+                          <span id="qty-iced-cappuccino" class="mx-2">0</span>
+                          <button class="btn btn-sm btn-primary increase" data-item="iced-cappuccino">+</button>
+                      </div>
                   </div>
-                </div>
-                <div class="tm-list-item">          
+              </div>
+      
+              <div class="tm-list-item" id="item-iced-espresso">
                   <img src="img/iced-espresso.png" alt="Image" class="tm-list-item-img">
                   <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Iced Espresso<span class="tm-list-item-price">$14.25</span></h3>
-                    <p class="tm-list-item-description">You are not permitted to redistribute this template ZIP file on any other template websites.</p>
+                      <h3 class="tm-list-item-name">Iced Espresso<span class="tm-list-item-price">$14.25</span></h3>
+                      <p class="tm-list-item-description">Mô tả ngắn về món này.</p>
+                      <div class="d-flex align-items-center">
+                          <button class="btn btn-sm btn-danger mr-2 toggle-availability" data-item="iced-espresso">Hết món</button>
+                          <button class="btn btn-sm btn-secondary decrease" data-item="iced-espresso">-</button>
+                          <span id="qty-iced-espresso" class="mx-2">0</span>
+                          <button class="btn btn-sm btn-primary increase" data-item="iced-espresso">+</button>
+                      </div>
                   </div>
-                </div>
+              </div>
                 <div class="tm-list-item">          
                   <img src="img/iced-latte.png" alt="Image" class="tm-list-item-img">
                   <div class="tm-black-bg tm-list-item-text">
@@ -107,13 +138,19 @@ https://www.tooplate.com/view/2121-wave-cafe
             <div id="hot" class="tm-tab-content">
               <div class="tm-list">
               
-                <div class="tm-list-item">          
+                <div class="tm-list-item" id="item-hot-americano">
                   <img src="img/hot-americano.png" alt="Image" class="tm-list-item-img">
                   <div class="tm-black-bg tm-list-item-text">
-                    <h3 class="tm-list-item-name">Hot Americano<span class="tm-list-item-price">$8.50</span></h3>
-                    <p class="tm-list-item-description">Here is a short description for the item along with a squared thumbnail.</p>              
+                      <h3 class="tm-list-item-name">Hot Americano<span class="tm-list-item-price">$8.50</span></h3>
+                      <p class="tm-list-item-description">Mô tả ngắn về món này.</p>
+                      <div class="d-flex align-items-center">
+                          <button class="btn btn-sm btn-danger mr-2 toggle-availability" data-item="hot-americano">Hết món</button>
+                          <button class="btn btn-sm btn-secondary decrease" data-item="hot-americano">-</button>
+                          <span id="qty-hot-americano" class="mx-2">0</span>
+                          <button class="btn btn-sm btn-primary increase" data-item="hot-americano">+</button>
+                      </div>
                   </div>
-                </div>
+              </div>
                 <div class="tm-list-item">          
                   <img src="img/hot-cappuccino.png" alt="Image" class="tm-list-item-img">
                   <div class="tm-black-bg tm-list-item-text">
@@ -174,30 +211,78 @@ https://www.tooplate.com/view/2121-wave-cafe
             <!-- end Drink Menu Page -->
           </div>
 
-          <!-- About Us Page -->
-          <div id="about" class="tm-page-content">
-            <div class="tm-black-bg tm-mb-20 tm-about-box-1">              
-              <h2 class="tm-text-primary tm-about-header">About Wave Cafe</h2>
-              <div class="tm-list-item tm-list-item-2">                
-                <img src="img/about-1.png" alt="Image" class="tm-list-item-img tm-list-item-img-big">
-                <div class="tm-list-item-text-2">
-                  <p>Wave Cafe is a one-page video background HTML CSS template from Tooplate. You can use this for your business websites.</p>
-                  <p>You can also use this for your client websites which you get paid for your website services. Please tell your friends about us.</p>
-                </div>                
-              </div>
-            </div>
-            <div class="tm-black-bg tm-mb-20 tm-about-box-2">              
-              <div class="tm-list-item tm-list-item-2">                
-                <div class="tm-list-item-text-2">
-                  <h2 class="tm-text-primary">How we began</h2>
-                  <p>If you wish to support us, please contact Tooplate. Thank you. Duis bibendum erat nec ipsum consectetur sodales.</p>                  
-                </div>                
-                <img src="img/about-2.png" alt="Image" class="tm-list-item-img tm-list-item-img-big tm-img-right">                
-              </div>
-              <p>Donec non urna elit. Quisque ut magna in dui mattis iaculis eu finibus metus. Suspendisse vel mi a lacus finibus vehicula vel ut diam. Nam pellentesque, mi quis ullamcorper.</p>
+          <!-- Modal Hiển thị Bill -->
+          <div class="modal fade" id="billModal" tabindex="-1" role="dialog" aria-labelledby="billModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="billModalLabel">Bill Check</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Món</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody id="billItems">
+                                <!-- Các món ăn sẽ được hiển thị ở đây -->
+                                <tr>
+                                    <td>Iced Americano</td>
+                                    <td>1</td>
+                                    <td>$10.25</td>
+                                </tr>
+                                <tr>
+                                    <td>Iced Cappuccino</td>
+                                    <td>2</td>
+                                    <td>$12.50</td>
+                                </tr>
+                                <tr>
+                                    <td>Iced Espresso</td>
+                                    <td>1</td>
+                                    <td>$14.25</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h5 class="text-right">Total: <span id="totalPrice">$49.50</span></h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" id="confirmPaymentBtn">Tiến hành thanh toán</button>
+
+                    </div>
+                </div>
             </div>
           </div>
-          <!-- end About Us Page -->
+
+          <!-- Modal Nhập Secret Code -->
+          <div class="modal fade" id="secretCodeModal" tabindex="-1" role="dialog" aria-labelledby="secretCodeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="secretCodeModalLabel">Xác nhận nhân viên</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Nhập mã xác nhận của nhân viên để tiếp tục:</p>
+                        <input type="password" id="secretCodeInput" class="form-control" placeholder="Nhập mã xác nhận">
+                        <p id="errorMsg" class="text-danger mt-2" style="display: none;">Mã không đúng, vui lòng thử lại.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-success" id="verifySecretCode">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
 
           <!-- Special Items Page -->
           <div id="special" class="tm-page-content">
@@ -292,7 +377,6 @@ https://www.tooplate.com/view/2121-wave-cafe
       </video>
   </div>
 
-  <script src="js/jquery-3.4.1.min.js"></script>    
   <script>
 
     function setVideoSize() {
@@ -394,7 +478,83 @@ https://www.tooplate.com/view/2121-wave-cafe
         }
       });
     });
+
+    $(document).ready(function () {
+      $("#openBill").click(function (e) {
+          e.preventDefault();
+          $("#billModal").modal("show");
+      });
+    });
+  
+    $(document).ready(function () {
+      // Khi nhấn "Tiến hành thanh toán", hiển thị popup nhập Secret Code
+      $("#confirmPaymentBtn").click(function () {
+          $("#secretCodeModal").modal("show");
+      });
+  
+      // Xử lý khi nhập mã xác nhận
+      $("#verifySecretCode").click(function () {
+          var secretCode = $("#secretCodeInput").val();
+          var correctCode = "1234"; // Mã xác nhận cố định (sau này có thể đổi sang mã động)
+  
+          if (secretCode === correctCode) {
+              alert("Thanh toán thành công!");
+              $("#secretCodeModal").modal("hide"); // Đóng popup
+              $("#billModal").modal("hide"); // Đóng popup Bill
+          } else {
+              $("#errorMsg").show(); // Hiển thị lỗi nếu nhập sai mã
+          }
+      });
+  
+      // Ẩn thông báo lỗi khi người dùng bắt đầu nhập lại
+      $("#secretCodeInput").on("input", function () {
+          $("#errorMsg").hide();
+      });
+  });
+  
+  $(document).ready(function () {
+    // Xử lý tăng số lượng món ăn
+    $(".increase").click(function () {
+        let item = $(this).data("item");
+        let qtyElement = $("#qty-" + item);
+        let qty = parseInt(qtyElement.text());
+
+        if (!$("#item-" + item).hasClass("out-of-stock")) {
+            qtyElement.text(qty + 1);
+        }
+    });
+
+    // Xử lý giảm số lượng món ăn
+    $(".decrease").click(function () {
+        let item = $(this).data("item");
+        let qtyElement = $("#qty-" + item);
+        let qty = parseInt(qtyElement.text());
+
+        if (qty > 0) {
+            qtyElement.text(qty - 1);
+        }
+    });
+
+    // Xử lý bật/tắt món ăn (hết hàng hoặc còn hàng)
+    $(".toggle-availability").click(function () {
+        let item = $(this).data("item");
+        let itemElement = $("#item-" + item);
+        let qtyElement = $("#qty-" + item);
+
+        if (itemElement.hasClass("out-of-stock")) {
+            itemElement.removeClass("out-of-stock");
+            $(this).text("Hết món").removeClass("btn-success").addClass("btn-danger");
+            qtyElement.text("0"); // Reset số lượng khi mở bán lại
+        } else {
+            itemElement.addClass("out-of-stock");
+            $(this).text("Còn món").removeClass("btn-danger").addClass("btn-success");
+            qtyElement.text("Hết món");
+        }
+      });
+    });
+
       
   </script>
+  
 </body>
 </html>
