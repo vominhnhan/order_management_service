@@ -1,4 +1,7 @@
+
+
 services:
+  # MySQL Database
   mysql:
     image: mysql:8.0
     container_name: mysql
@@ -9,28 +12,84 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
 
-  zookeeper:
-    image: confluentinc/cp-zookeeper:latest
-    container_name: zookeeper
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
     ports:
-      - "2181:2181"
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - app-network
 
-  kafka:
-    image: confluentinc/cp-kafka:latest
-    container_name: kafka
+  # Redis
+  redis:
+    image: redis:6
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - app-network
+
+  # API Gateway
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     depends_on:
-      - zookeeper
+      - auth-service
+      - chef-service
+    networks:
+      - app-network
+
+  # Auth Service
+  auth-service:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
     ports:
-      - "9092:9092"
+      - "3005:3005"
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      - DATABASE_URL=mysql://root:root@mysql:3306/restaurant_db
+      - JWT_SECRET=your-secret-key
+      - ACCESS_TOKEN_SECRET=your-secret-key
+      - ACCESS_TOKEN_EXPIRED=1h
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  # Chef Service
+  chef-service:
+    build:
+      context: ./chef-service
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=mysql://root:root@mysql:3306/restaurant_db
+      - JWT_SECRET=your-secret-key
+      - REDIS_URL=redis://redis:6379
+      - RABBITMQ_URL=amqp://rabbitmq
+      - AUTH_SERVICE_URL=http://api-gateway:3000
+    depends_on:
+      - mysql
+      - redis
+      - rabbitmq
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   mysql-data:
+  redis-data:

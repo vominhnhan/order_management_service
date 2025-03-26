@@ -1,0 +1,35 @@
+{
+  "name": "chef-service",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "restaurant",
+    "management",
+    "service"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Dịch vụ quản lý nhà hàng",
+  "dependencies": {
+    "@prisma/client": "^6.5.0",
+    "amqplib": "^0.10.5",
+    "axios": "^1.8.4",
+    "chef-service": "file:",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "joi": "^17.11.0",
+    "mongoose": "^8.0.0",
+    "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "prisma": "^6.5.0"
+  }
+}

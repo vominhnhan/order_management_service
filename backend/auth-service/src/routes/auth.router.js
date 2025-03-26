@@ -5,5 +5,6 @@ import { protect } from "../middlewares/auth.middleware.js";
 const authRouter = express.Router();
 
 authRouter.post("/login", authController.login);
+authRouter.post("/verify-token", authController.verifyToken);
 
 export default authRouter;

@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://thuthuatphanmem.vn/uploads/2018/08/21/hinh-nen-thien-nhien-phong-canh-dep-17_043146976.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #ff4d4d;
+    margin: 10px 0;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #f5a623;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #e69500;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+}
+
+.options input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+.forgot-password {
+    color: #fff;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.or-sign-in {
+    position: relative;
+    margin: 20px 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+.or-sign-in span {
+    background: transparent;
+    padding: 0 10px;
+}
+
+.or-sign-in::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #fff;
+    z-index: -1;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-btn {
+    width: 48%;
+    background: #fff;
+    color: #333;
+    font-weight: bold;
+}
+
+.social-btn:hover {
+    background: #f0f0f0;
+}
+
+
+/* CSS cho danh sách món ăn */
+
+#order-items-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#logout-btn {
+    margin: 10px;
+    background-color: #dc3545;
+}
+
+#logout-btn:hover {
+    background-color: #c82333;
+}
+
+#order-items-list ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+#order-items-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#order-items-list li:last-child {
+    border-bottom: none;
+}

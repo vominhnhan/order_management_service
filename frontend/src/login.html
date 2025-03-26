@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đơn hàng</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Container chính -->
+    <div id="app">
+        <!-- Giao diện đăng nhập -->
+        <div id="login-container" class="login-container">
+            <h2>Have an account?</h2>
+            <p id="login-error" class="error" style="display: none;"></p>
+            <form id="login-form">
+                <div>
+                    <input type="text" id="username" placeholder="Username" required />
+                </div>
+                <div>
+                    <input type="password" id="password" placeholder="Password" required />
+                </div>
+                <button type="submit">SIGN IN</button>
+                <div class="options">
+                    <label>
+            <input type="checkbox" id="remember-me" /> Remember Me
+          </label>
+                    <a href="#" class="forgot-password">Forgot Password</a>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Giao diện danh sách món ăn -->
+        <div id="order-items-container" style="display: none;">
+            <button id="logout-btn">Đăng xuất</button>
+            <h2>Danh sách món ăn đang chuẩn bị</h2>
+            <p id="order-items-error" class="error" style="display: none;"></p>
+            <div id="order-items-list">
+                <!-- Danh sách món ăn sẽ được thêm bằng JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

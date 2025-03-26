@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách món ăn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            background: #f8f8f8;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Danh sách món ăn đang chuẩn bị</h2>
+    <p id="error-message" class="error"></p>
+    <ul id="order-list"></ul>
+    <button onclick="fetchOrderItems()">Tải lại</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", fetchOrderItems);
+
+        function fetchOrderItems() {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                document.getElementById("error-message").textContent = "Bạn chưa đăng nhập!";
+                return;
+            }
+
+            fetch("http://localhost:3000/api/chef/pending-order-items", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const orderList = document.getElementById("order-list");
+                    const errorMessage = document.getElementById("error-message");
+
+                    orderList.innerHTML = "";
+                    errorMessage.textContent = "";
+
+                    if (data.metaData && data.metaData.length > 0) {
+                        data.metaData.forEach(item => {
+                            const li = document.createElement("li");
+                            li.innerHTML = `<strong>${item.product.name}</strong> - Số lượng: ${item.quantity} - 
+                                        Bàn: ${item.order.table.table_name} - Ghi chú: ${item.notes || "Không có"}`;
+                            orderList.appendChild(li);
+                        });
+                    } else {
+                        orderList.innerHTML = "<p>Không có món ăn nào đang chuẩn bị.</p>";
+                    }
+                })
+                .catch(() => {
+                    document.getElementById("error-message").textContent = "Lỗi khi lấy danh sách món ăn!";
+                });
+        }
+    </script>
+
+</body>
+
+</html>
